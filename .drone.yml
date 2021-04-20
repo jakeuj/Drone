@@ -1,0 +1,18 @@
+kind: pipeline
+name: dev_depoly
+workspace:
+  base: /data/netcore
+  path: istr
+  
+steps:
+- name: build
+  image: mcr.microsoft.com/dotnet/aspnet:3.1
+  commands:
+    - echo '==================== 查看打包环境 ====================' 
+    - pwd
+    - echo $PATH
+    - which dotnet
+    - dotnet --version
+    - dotnet publish -c:Release -o ./publish
+    - echo '==================== end build ===================='
+    - ls -la
