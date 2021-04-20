@@ -8,11 +8,6 @@ steps:
 - name: build
   image: mcr.microsoft.com/dotnet/sdk:3.1
   commands:
-    - echo '==================== 查看打包环境 ====================' 
-    - pwd
-    - echo $PATH
-    - which dotnet
-    - dotnet --version
     - dotnet publish -c:Release -o ./publish
-    - echo '==================== end build ===================='
+    - echo '>>> 建置完成，顯示一下結果看看，威力 Boy.'
     - ls -la
