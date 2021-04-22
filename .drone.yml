@@ -8,7 +8,8 @@ steps:
   secrets: [ aliyun_access_key_id,aliyun_access_key_secret]
   commands:
     - wget https://webplus-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/cli/install.sh
-    - source install.sh
+    - ls -la
+    - source ./install.sh
     - echo "autoload bashcompinit \nbashcompinit" >> ~/.zshrc
     - cat ~/.zshrc
     - apt-get update -y
