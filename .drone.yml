@@ -9,7 +9,7 @@ steps:
   image: mcr.microsoft.com/dotnet/sdk:3.1
   secrets: [ aliyun_access_key_id,aliyun_access_key_secret]
   commands:
-    - echo "\nautoload bashcompinit \nbashcompinit" >> ~/.zshrc
+    - echo "autoload bashcompinit \nbashcompinit" >> ~/.zshrc
     - cat ~/.zshrc
     - apt-get update -y
     - apt-get install zip -y
