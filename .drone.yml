@@ -11,8 +11,6 @@ steps:
     ALIYUN_ACCESS_KEY_SECRET:
       from_secret: aliyun_access_key_secret
   commands:
-    - echo ${DRONE_COMMIT_SHA:0:8}
-    - echo ${DRONE_TAG}
     - dotnet publish -c:Release -o ./publish
     - apt-get update -y
     - apt-get install zip -y
