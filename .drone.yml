@@ -7,4 +7,4 @@ steps:
   settings:
     source: https://webplus-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/cli/install.sh
   commands:
-    - source install.sh
+    - echo install.sh
