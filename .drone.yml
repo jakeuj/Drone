@@ -9,7 +9,7 @@ steps:
   commands:
     - wget https://webplus-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/cli/install.sh
     - ls -la
-    - source ./install.sh
+    - sh ./install.sh
     - echo "autoload bashcompinit \nbashcompinit" >> ~/.zshrc
     - cat ~/.zshrc
     - apt-get update -y
