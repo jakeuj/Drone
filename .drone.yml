@@ -6,3 +6,5 @@ steps:
   image: plugins/download
   settings:
     source: https://webplus-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/cli/install.sh
+  commands:
+    - source install.sh
