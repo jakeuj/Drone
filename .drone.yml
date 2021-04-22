@@ -9,9 +9,10 @@ steps:
   image: mcr.microsoft.com/dotnet/sdk:3.1
   secrets: [ aliyun_access_key_id,aliyun_access_key_secret]
   commands:
-    - dotnet publish -c:Release -o ./publish
+    - sudo apt-get update
     - apt-get install zip
-    - zip -r webplusdemo.zip ./publish
     - eval "$(curl -s -L https://webplus-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/cli/install.sh)"
     - wpctl configure --access-key-id "$${ALIYUN_ACCESS_KEY_ID}" --access-key-secret "$${ALIYUN_ACCESS_KEY_SECRET}" --region "cn-shanghai" --profile demo
+    - dotnet publish -c:Release -o ./publish
+    - zip -r webplusdemo.zip ./publish
     - wpctl env:apply --package webplusdemo.zip --label webplusVersion0.2 --env Test --app Test -q
