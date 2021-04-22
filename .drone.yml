@@ -6,12 +6,12 @@ steps:
 - name: build
   image: mcr.microsoft.com/dotnet/sdk:3.1
   commands:
-    - echo $${ALIYUN_ACCESS_KEY_ID}
+    - echo $ALIYUN_ACCESS_KEY_ID
     - wget https://webplus-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/cli/install.sh
     - sh ./install.sh
     - apt-get update -y
     - apt-get install zip -y
-    - wpctl configure --access-key-id $${ALIYUN_ACCESS_KEY_ID} --access-key-secret $${ALIYUN_ACCESS_KEY_SECRET} --region cn-shanghai --profile demo
+    - wpctl configure --access-key-id $ALIYUN_ACCESS_KEY_ID --access-key-secret $ALIYUN_ACCESS_KEY_SECRET --region cn-shanghai --profile demo
     - dotnet publish -c:Release -o ./publish
     - zip -r webplusdemo.zip ./publish
     - wpctl env:apply --package webplusdemo.zip --label webplusVersion0.2 --env Test --app Test -
