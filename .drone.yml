@@ -10,7 +10,7 @@ steps:
   secrets: [ aliyun_access_key_id,aliyun_access_key_secret]
   commands:
     - apt-get update -y
-    - apt-get install zip
+    - apt-get install zip -y
     - eval "$(curl -s -L https://webplus-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/cli/install.sh)"
     - wpctl configure --access-key-id "$${ALIYUN_ACCESS_KEY_ID}" --access-key-secret "$${ALIYUN_ACCESS_KEY_SECRET}" --region "cn-shanghai" --profile demo
     - dotnet publish -c:Release -o ./publish
