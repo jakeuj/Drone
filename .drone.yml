@@ -1,15 +1,8 @@
 kind: pipeline
-name: dev_depoly
-workspace:
-  base: /data/netcore
-  path: istr
-  
+name: default
+
 steps:
 - name: download  
   image: plugins/download
   settings:
-    source: https://webplus-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/cli/install.sh
-  secrets: [ aliyun_access_key_id,aliyun_access_key_secret]
-  commands:
-    - source install.sh
-    - wpctl configure --access-key-id "$${ALIYUN_ACCESS_KEY_ID}" --access-key-secret "$${ALIYUN_ACCESS_KEY_SECRET}" --region "cn-shanghai" --profile demo
+    source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
