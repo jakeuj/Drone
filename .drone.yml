@@ -14,7 +14,7 @@ steps:
     - wpctl configure --access-key-id $ALIYUN_ACCESS_KEY_ID --access-key-secret $ALIYUN_ACCESS_KEY_SECRET --region cn-shanghai --profile demo
     - dotnet publish -c:Release -o ./publish
     - zip -r webplusdemo.zip ./publish
-    - wpctl env:apply --package webplusdemo.zip --label webplusVersion0.2 --env Test --app Test -
+    - wpctl env:apply --package webplusdemo.zip --label webplusVersion0.2 --env Test --app Test -q
   environment:
     ALIYUN_ACCESS_KEY_ID:
       from_secret: aliyun_access_key_id
