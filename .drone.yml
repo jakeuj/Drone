@@ -4,6 +4,10 @@ name: default
 
 steps:
 - name: build
+  image: mcr.microsoft.com/dotnet/sdk:3.1
+  commands:
+    - dotnet publish -c:Release -o ./publish
+- name: deploy
   image: jakeuj/aliwpctl
   environment:
     ALIYUN_ACCESS_KEY_ID:
@@ -11,7 +15,6 @@ steps:
     ALIYUN_ACCESS_KEY_SECRET:
       from_secret: aliyun_access_key_secret
   commands:
-    - dotnet publish -c:Release -o ./publish
     - zip -r webplusdemo.zip ./publish
     - wpctl configure --access-key-id $ALIYUN_ACCESS_KEY_ID --access-key-secret $ALIYUN_ACCESS_KEY_SECRET --region cn-shanghai --profile demo
     - wpctl env:apply --package webplusdemo.zip --label ${DRONE_COMMIT_SHA:0:8} --env Test --app Test -q
