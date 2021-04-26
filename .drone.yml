@@ -6,9 +6,10 @@ steps:
 - name: build
   image: mcr.microsoft.com/dotnet/sdk:3.1
   environment:
-    channel_token: line_token
+    LINE_TOKEN:
+      from_secret: line_token
   commands:
-    - curl https://notify-api.line.me/api/notify -X POST -H 'Authorization: Bearer $channel_token' -F 'message=Test'
+    - curl https://notify-api.line.me/api/notify -X POST -H 'Authorization: Bearer $LINE_TOKEN' -F 'message=Test'
     - dotnet publish -c:Release -o ./publish
 - name: deploy
   image: jakeuj/aliwpctl
