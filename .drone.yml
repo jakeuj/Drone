@@ -20,4 +20,4 @@ steps:
     - zip -r webplusdemo.zip ./publish
     - wpctl configure --access-key-id $ALIYUN_ACCESS_KEY_ID --access-key-secret $ALIYUN_ACCESS_KEY_SECRET --region cn-shanghai --profile demo
     - wpctl env:apply --package webplusdemo.zip --label ${DRONE_COMMIT_SHA:0:8} --env Test --app Test -q
-    - curl -X POST -H 'Authorization: Bearer $LINE_TOKEN' -F 'message=foobar' https://notify-api.line.me/api/notify
+    - curl https://notify-api.line.me/api/notify -X POST -H 'Authorization: Bearer $LINE_TOKEN' -F 'message=foobar'
