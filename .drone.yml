@@ -8,7 +8,7 @@ steps:
   environment:
     channel_token: line_token
   commands:
-    - sh "curl https://notify-api.line.me/api/notify -X POST -H 'Authorization: Bearer $channel_token' -F 'message=${DRONE_COMMIT_SHA:0:8}'"
+    - eval "$(curl https://notify-api.line.me/api/notify -X POST -H 'Authorization: Bearer $channel_token' -F 'message=Test')"
     - dotnet publish -c:Release -o ./publish
 - name: deploy
   image: jakeuj/aliwpctl
