@@ -9,7 +9,7 @@ steps:
     LINE_TOKEN:
       from_secret: line_token
   commands:
-    - curl https://notify-api.line.me/api/notify -X POST -F 'message=Test' -H 'Authorization: Bearer [$LINE_TOKEN]'
+    - curl https://notify-api.line.me/api/notify -X POST -F 'message=Test' -H "Content-Type: application/json" -H 'Authorization: Bearer $LINE_TOKEN'
     - dotnet publish -c:Release -o ./publish
 - name: deploy
   image: jakeuj/aliwpctl
