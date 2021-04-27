@@ -3,13 +3,15 @@ type: docker
 name: default
 
 steps:
-- name: build
-  image: mcr.microsoft.com/dotnet/sdk:3.1
+- name: line
   environment:
     LINE_TOKEN:
       from_secret: line_token
   commands:
-    - "curl https://notify-api.line.me/api/notify -X POST -F 'message=Test' -H 'Authorization: Bearer $LINE_TOKEN'"
+    - "curl https://notify-api.line.me/api/notify -X POST -F 'message=Test' -H 'Authorization: Bearer $LINE_TOKEN' --trace-ascii debugdump.txt -v"
+    - cat debugdump.txt
+- name: build
+  image: mcr.microsoft.com/dotnet/sdk:3.1
     - dotnet publish -c:Release -o ./publish
 - name: deploy
   image: jakeuj/aliwpctl
