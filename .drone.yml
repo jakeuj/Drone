@@ -4,6 +4,7 @@ name: default
 
 steps:
 - name: line
+  image: mcr.microsoft.com/dotnet/aspnet:3.1
   environment:
     LINE_TOKEN:
       from_secret: line_token
